@@ -1,4 +1,5 @@
 import { eachDayOfInterval } from "data-fns";
+import { supabase } from "./supabase";
 
 /////////////
 // GET
