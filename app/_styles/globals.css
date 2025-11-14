@@ -32,9 +32,36 @@
 
 /* For data picker */
 
-.rdp {
+.rdp-root {
   --rdp-cell-size: 32px !important;
   --rdp-accent-color: theme("colors.accent.500") !important;
-  --rdp-background-color: theme("colors.accent.600") !important;
+  --rdp-accent-background-color: theme("colors.accent.600") !important;
   margin: 0 !important;
+  --rdp-months-display: flex !important;
+  --rdp-months-flex-direction: row !important;
+  --rdp-months {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 1rem;
+  }
 }
+
+/* Optional: Make it responsive - stack on mobile
+@media (max-width: 768px) {
+  .rdp-months {
+    flex-direction: column !important;
+  }
+}
+
+/* Ensure each month takes appropriate space */
+/*
+.rdp-month {
+  flex: 1;
+  min-width: 280px;
+}
+*/
+/* Optional: Add some spacing and borders */
+/*
+.rdp {
+  padding: 1rem;
+} */

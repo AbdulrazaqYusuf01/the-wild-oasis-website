@@ -1,3 +1,5 @@
+"use client";
+
 import { isWithinInterval } from "date-fns";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
@@ -11,6 +13,11 @@ function isAlreadyBooked(range, datesArr) {
     )
   );
 }
+
+const changeLook = {
+  display: "flex",
+  gap: "26px",
+};
 
 function DateSelector() {
   // CHANGE
@@ -27,15 +34,22 @@ function DateSelector() {
   return (
     <div className="flex flex-col justify-between">
       <DayPicker
-        className="pt-12 place-self-center"
+        className="pt-12  place-self-center"
         mode="range"
         min={minBookingLength + 1}
         max={maxBookingLength}
-        fromMonth={new Date()}
+        startMonth={new Date()}
         fromDate={new Date()}
-        toYear={new Date().getFullYear() + 5}
+        endMonth={new Date(new Date().getFullYear() + 5, 11, 31)}
         captionLayout="dropdown"
         numberOfMonths={2}
+        classNames={{
+          months: "flex flex-row gap-4 items-start",
+          month: "space-y-4 flex-1 min-w-0",
+          month_grid: "",
+
+          // root: "",
+        }}
       />
 
       <div className="flex items-center justify-between px-8 bg-accent-500 text-primary-800 h-[72px]">
