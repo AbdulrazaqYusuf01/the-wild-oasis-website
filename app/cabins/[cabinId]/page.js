@@ -4,6 +4,7 @@ import Image from "next/image";
 import TextExpander from "@/app/_components/TextExpander";
 import DateSelector from "@/app/_components/DateSelector";
 import ReservationForm from "@/app/_components/ReservationForm";
+import Reservation from "@/app/_components/Reservation";
 
 export async function generateMetadata({ params }) {
   const { name } = await getCabin(params.cabinId);
@@ -79,14 +80,7 @@ export default async function Page({ params }) {
         </h2>
       </div>
 
-      <div className="grid grid-cols-9 border border-primary-800 min-h-[400px]">
-        <div className="col-start-1 col-end-6">
-          <DateSelector />
-        </div>
-        <div className="col-start-6 col-end-10">
-          <ReservationForm />
-        </div>
-      </div>
+      <Reservation />
     </div>
   );
 }
