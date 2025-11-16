@@ -113,7 +113,7 @@ export async function getBookedDatesByCabinId(cabinId) {
     throw new Error("Bookings could not get loaded");
   }
 
-  await new Promise((res) => setTimeout(res, 5000));
+  // await new Promise((res) => setTimeout(res, 5000));
 
   // Converting to actual dates to be displayed in the date picker
   const bookedDates = data
@@ -131,7 +131,7 @@ export async function getBookedDatesByCabinId(cabinId) {
 export async function getSettings() {
   const { data, error } = await supabase.from("settings").select("*").single();
 
-  await new Promise((res) => setTimeout(res, 2000));
+  // await new Promise((res) => setTimeout(res, 2000));
 
   if (error) {
     console.error(error);
