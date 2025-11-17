@@ -35,6 +35,7 @@ function DateSelector({ settings, cabin, bookedDate }) {
       <DayPicker
         className="pt-12  place-self-center"
         mode="range"
+        onSelect={(range) => console.log(range)}
         min={minBookingLength + 1}
         max={maxBookingLength}
         startMonth={new Date()}
