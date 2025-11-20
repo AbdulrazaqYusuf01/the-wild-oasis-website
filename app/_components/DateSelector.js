@@ -50,8 +50,9 @@ function DateSelector({ settings, cabin, bookedDate }) {
         classNames={{
           months: "flex flex-row gap-4 items-start",
           month: "space-y-4 flex-1 min-w-0",
+          month_grid: "",
 
-          root: "",
+          // root: "",
         }}
       />
 
