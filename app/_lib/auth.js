@@ -1,11 +1,23 @@
-import { betterAuth } from "better-auth/*";
+import NextAuth from "next-auth";
+import Google from "next-auth/providers/google";
+import GitHub from "next-auth/providers/github";
 
-export const auth = betterAuth({
-  socialProviders: {
-    google: {
-      prompt: "select_account",
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    },
-  },
-});
+const authConfig = {
+  providers: [
+    Google({
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code",
+        },
+      },
+    }),
+  ],
+  GitHub,
+};
+
+export const {
+  auth,
+  handlers: { GET, POST },
+} = NextAuth(authConfig);
