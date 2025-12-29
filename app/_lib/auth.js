@@ -1,6 +1,5 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
-import GitHub from "next-auth/providers/github";
 
 const authConfig = {
   providers: [
@@ -14,7 +13,11 @@ const authConfig = {
       },
     }),
   ],
-  GitHub,
+  callbacks: {
+    authorized({ auth, request }) {
+      return !!auth?.user;
+    },
+  },
 };
 
 export const {
