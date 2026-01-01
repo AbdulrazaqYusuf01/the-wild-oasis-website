@@ -21,6 +21,8 @@ const authConfig = {
   pages: {
     signIn: "/login",
   },
+
+  signIn({ user, account, profile }) {},
 };
 
 export const {
