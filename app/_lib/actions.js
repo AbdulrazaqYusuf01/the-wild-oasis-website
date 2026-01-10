@@ -38,8 +38,8 @@ export async function updateReservation(formData) {
   if (!bookingIds.includes(bookingId))
     throw new Error("You are not allowed to edit this reservation");
 
-  const numGuests = formData.get("numGuests");
-  const observations = formData.get("observations");
+  const numGuests = Number(formData.get("numGuests"));
+  const observations = formData.get("observations").slice(0, 1000);
 
   const updateData = { numGuests, observations };
 
@@ -50,6 +50,7 @@ export async function updateReservation(formData) {
 
   if (error) throw new Error("Booking could not be updated");
 
+  revalidatePath(`/account/reservations/edit/${bookingId}`);
   revalidatePath("/account/reservations");
   redirect("/account/reservations");
 }

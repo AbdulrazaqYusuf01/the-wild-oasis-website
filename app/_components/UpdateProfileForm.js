@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { updateGuest } from "../_lib/actions";
 import { useFormStatus } from "react-dom";
+import SubmitButton from "./SubmitButton";
 
 function UpdateProfileForm({ guest, children }) {
   const [count, setCount] = useState();
@@ -57,7 +58,7 @@ function UpdateProfileForm({ guest, children }) {
       </div>
 
       <div className="flex justify-end items-center gap-6">
-        <Button />
+        <SubmitButton name="profile" />
       </div>
     </form>
   );
