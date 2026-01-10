@@ -2,6 +2,10 @@
 
 import { signIn, signOut } from "./auth";
 
+export async function updateGuest() {
+  console.log("update guest");
+}
+
 export async function signInAction() {
   await signIn("google", {
     redirectTo: "/account",
