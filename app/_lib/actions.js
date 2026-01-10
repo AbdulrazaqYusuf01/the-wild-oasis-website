@@ -27,6 +27,33 @@ export async function updateGuest(formData) {
   revalidatePath("/account/profile");
 }
 
+export async function updateReservation(formData) {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+  const bookingId = Number(formData.get("bookingId"));
+  console.log(bookingId);
+
+  const bookings = await getBookings(session.user.guestId);
+  const bookingIds = bookings.map((booking) => booking.id);
+  console.log(bookingIds);
+  console.log(typeof bookingId);
+  if (!bookingIds.includes(bookingId))
+    throw new Error("You are not allowed to edit this reservation");
+
+  const numGuests = formData.get("numGuests");
+  const observations = formData.get("observations");
+
+  const updateData = { numGuests, observations };
+  console.log(updateData);
+
+  const { error } = await supabase
+    .from("bookings")
+    .update(updateData)
+    .eq("id", bookingId);
+
+  if (error) throw new Error("Booking could not be updated");
+}
+
 export async function deleteReservation(bookingId) {
   const session = await auth();
   if (!session) throw new Error("You must be logged in");
