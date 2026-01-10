@@ -1,9 +1,9 @@
 "use server";
 
-import { signIn, signOut } from "./auth";
+import { auth, signIn, signOut } from "./auth";
 
 export async function updateGuest(formData) {
-  const session = await auth;
+  const session = await auth();
   if (!session) throw new Error("You must be logged in");
   const nationalID = formData.get("nationalID");
   const [nationality, countryFlag] = formData.get("nationality").split("%");
