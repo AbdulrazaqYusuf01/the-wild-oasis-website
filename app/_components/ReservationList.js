@@ -7,9 +7,8 @@ import { deleteReservation } from "../_lib/actions";
 function ReservationList({ bookings }) {
   const [optimisticBookings, optimisticDelete] = useOptimistic(
     bookings,
-    (curBookings, bookingId) => {
-      return curBookings.filter((booking) => booking.id !== bookingId);
-    }
+    (curBookings, bookingId) =>
+      curBookings.filter((booking) => booking.id !== bookingId)
   );
 
   async function handleDelete(bookingId) {
